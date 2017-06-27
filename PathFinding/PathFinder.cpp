@@ -53,7 +53,7 @@ void PathFinder::FindPath() {
 				neighbour->color = BLUE;		
 			}
 		}
-		map->Draw();
+		//map->Draw();
 	}
 }
 
@@ -75,9 +75,10 @@ void PathFinder::SetGCost(Node* n) {
 void PathFinder::SetHCost(Node *n) {
 	if (n->parent != nullptr) {
 		//calculate distances
-		int xDis = n->xPos - this->endNode->xPos; 
-		int yDis = n->yPos - this->endNode->yPos;
-		n->hCost = static_cast<int>(sqrt(xDis*xDis + yDis*yDis)); //use pytagorean theorem to find euclidean distance from node to end as a heuristic
+		int xDis = abs(n->xPos - this->endNode->xPos); 
+		int yDis = abs(n->yPos - this->endNode->yPos);
+		n->hCost =  10*(xDis + yDis) + (14 - (2 * 10))*min(xDis, yDis); //due to the nature of movement hCost equals to the cost of steps that must be done
+		//vertically or horizontally and saves the amount of steps that can be done diagonally
 	}
 }
 

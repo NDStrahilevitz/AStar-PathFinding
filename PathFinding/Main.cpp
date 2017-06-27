@@ -6,7 +6,7 @@
 
 /*
 TODO:
-1. fix new path evaluation for evaluated node
+1. reconsider openlist data structure 
 */
 int main()
 {
@@ -18,8 +18,8 @@ int main()
 	std::cin >> startX >> startY;
 	std::cout << "enter end coordinates(use index numbering)"<<std::endl;
 	std::cin >> endX >> endY;*/
-	Grid* map = new Grid(10,10);
-	PathFinder pf(map,0,0,9,9);
+	Grid* map = new Grid(100,100);
+	PathFinder pf(map,0,0,99,99);
 	pf.FindPath();
 	pf.RetracePath();
 	map->Draw();
