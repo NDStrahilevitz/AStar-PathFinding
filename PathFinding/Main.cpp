@@ -6,14 +6,20 @@
 
 /*
 TODO:
-2. change gcost and hcost change implementations to  return an int
-3. change gcost method to be parent based again
+1. fix new path evaluation for evaluated node
 */
 int main()
 {
 	srand(time(NULL));
-	Grid * map = new Grid(50,50);
-	PathFinder pf(map,0,0,49,49);
+	/*int sizeX, sizeY, startX, startY, endX, endY;
+	std::cout << "enter grid's size formatted as x y" << std::endl;
+	std::cin >> sizeX >> sizeY;
+	std::cout << "enter starting coordinates(use index numbering)" << std::endl;
+	std::cin >> startX >> startY;
+	std::cout << "enter end coordinates(use index numbering)"<<std::endl;
+	std::cin >> endX >> endY;*/
+	Grid* map = new Grid(10,10);
+	PathFinder pf(map,0,0,9,9);
 	pf.FindPath();
 	pf.RetracePath();
 	map->Draw();

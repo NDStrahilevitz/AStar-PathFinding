@@ -9,7 +9,7 @@ Node::Node(int _x, int _y) {
 	this->yPos = _y;
 	this->gCost = 0;
 	this->hCost = 0;
-	this->isBlocked = Randomizer::GenerateBool(0.15);
+	this->isBlocked = Randomizer::GenerateBool(0);
 	if (!this->isBlocked)
 		this->color = WHITE;
 	else
@@ -43,9 +43,10 @@ void Node::Draw() {
 		SetConsoleTextAttribute(consoleH, FOREGROUND_WHITE);
 		break;
 	}
-	//if (this->fCost() != 0)
-	//	std::cout << this->fCost() << " ";
-//	else
-		std::cout << "*" << " ";
+	if (this->fCost() != 0)
+		std::cout << this->gCost << "|" << this->hCost << " ";
+	else
+		std::cout << "00" << "|" << "00" << " ";
+	//printf("*");
 	SetConsoleTextAttribute(consoleH, FOREGROUND_WHITE);
 }

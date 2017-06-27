@@ -40,10 +40,11 @@ void PathFinder::FindPath() {
 				Node* oldParent = neighbour->parent;
 				neighbour->parent = current;
 				SetGCost(neighbour);
-				if (neighbour->gCost > oldGCost)
+				if (neighbour->gCost > oldGCost) {
 					neighbour->parent = oldParent;
-			}
-		//	std::set<Node*>::const_iterator openListSearcher = this->openList.find(neighbour);		
+					SetGCost(neighbour);
+				}
+			}	
 			if (std::find(this->openList.begin(),this->openList.end(), neighbour)==this->openList.end()) {
 				neighbour->parent = current;
 				SetGCost(neighbour);
@@ -52,15 +53,22 @@ void PathFinder::FindPath() {
 				neighbour->color = BLUE;		
 			}
 		}
+		map->Draw();
 	}
 }
 
 void PathFinder::SetGCost(Node* n) {
 	if (n->parent != nullptr) {
-		//calculate distances
-		int xDis = n->xPos - this->startNode->xPos;
-		int yDis = n->yPos - this->startNode->yPos;
-		n->gCost = static_cast<int>(sqrt(xDis*xDis + yDis*yDis)); //use pytagorean theorem to find euclidean distance from node to end as a heuristic
+		int gCost = 0;
+		Node* current = n;
+		while (current->parent != nullptr) {
+			if (current->parent->xPos != current->xPos && current->parent->yPos != current->yPos)
+				gCost += 14;
+			else
+				gCost += 10;
+			current = current->parent;
+		}
+		n->gCost = gCost;
 	}
 }
 
