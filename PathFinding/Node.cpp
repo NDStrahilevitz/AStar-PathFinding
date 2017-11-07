@@ -9,7 +9,7 @@ Node::Node(int _x, int _y) {
 	this->yPos = _y;
 	this->gCost = 0;
 	this->hCost = 0;
-	this->isBlocked = Randomizer::GenerateBool(0.2);
+	this->isBlocked = Randomizer::GenerateBool(0.2f);
 	if (!this->isBlocked)
 		this->color = WHITE;
 	else

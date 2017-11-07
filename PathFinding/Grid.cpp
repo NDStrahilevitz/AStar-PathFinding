@@ -27,6 +27,7 @@ std::vector<Node*> Grid::GetNeighbours(Node* n) {
 	return neighbours;
 }
 
+//ty stack overflow
 void Grid::cls(HANDLE hConsole)
 {
 	COORD coordScreen = { 0, 0 };    // home for the cursor 
@@ -77,9 +78,13 @@ void Grid::cls(HANDLE hConsole)
 	SetConsoleCursorPosition(hConsole, coordScreen);
 }
 
+//this uses a system call, disgusting, i know
+void Grid::cls() {
+	system("cls");
+}
+
 void Grid::Draw() {
-	Sleep(1000);
-	cls(console);
+	cls();
 	for (int i = 0; i < this->sizeY; i++)
 	{
 		for (int j = 0; j < this->sizeX; j++)

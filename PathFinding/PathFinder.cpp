@@ -14,6 +14,11 @@ PathFinder::PathFinder(Grid* _map, int sX, int sY, int eX, int eY){
 }
 
 void PathFinder::FindPath() {
+	if (this->startNode == this->endNode)
+	{
+		this->startNode->color = PURPLE;
+		return;
+	}
 	while (!this->openList.empty()) {
 		Node* current = *this->openList.begin();
 		this->openList.erase(this->openList.begin());
@@ -82,7 +87,6 @@ void PathFinder::SetHCost(Node *n) {
 	}
 }
 
-//TODO: add retracing of path through parents
 std::vector<Node*> PathFinder::RetracePath() {
 	if (this->endNode->parent == nullptr)
 		return {};

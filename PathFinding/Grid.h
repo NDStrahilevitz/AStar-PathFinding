@@ -8,6 +8,7 @@ private:
 	int sizeX;
 	HANDLE console;
 	void cls(HANDLE hConsole);
+	void cls();
 public:
 	Grid(int _x, int _y);
 	std::vector< std::vector<Node*> > grid; //stores the node grid

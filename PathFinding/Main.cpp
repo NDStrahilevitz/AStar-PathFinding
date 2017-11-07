@@ -11,15 +11,15 @@ TODO:
 int main()
 {
 	srand(time(NULL));
-	/*int sizeX, sizeY, startX, startY, endX, endY;
+	int sizeX, sizeY, startX, startY, endX, endY;
 	std::cout << "enter grid's size formatted as x y" << std::endl;
 	std::cin >> sizeX >> sizeY;
 	std::cout << "enter starting coordinates(use index numbering)" << std::endl;
 	std::cin >> startX >> startY;
 	std::cout << "enter end coordinates(use index numbering)"<<std::endl;
-	std::cin >> endX >> endY;*/
-	Grid* map = new Grid(100,100);
-	PathFinder pf(map,0,0,99,99);
+	std::cin >> endX >> endY;
+	Grid* map = new Grid(sizeX,sizeY);
+	PathFinder pf(map,startX,startY,endX,endY);
 	pf.FindPath();
 	pf.RetracePath();
 	map->Draw();
